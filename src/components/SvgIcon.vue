@@ -43,8 +43,10 @@ export default {
 
   computed: {
     dynamicComponent() {
+      const name = this.name;
+
       return defineAsyncComponent(() =>
-        import(`./icons/${this.name.toLowerCase()}.vue`)
+        import(`./icons/${name.toLowerCase()}.vue`)
       );
     },
 
