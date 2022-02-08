@@ -6,6 +6,9 @@ const selectedIcon = ref(availableIcons[0]);
 
 const hasHoverColor = ref(false);
 const hoverColor = ref();
+
+const availableSizes = ["sm", "md", "lg", "xl"];
+const selectedSize = ref(availableSizes[1]);
 </script>
 
 <template>
@@ -14,7 +17,11 @@ const hoverColor = ref();
   </header>
 
   <main>
-    <svg-icon :name="selectedIcon" :hover-color="hasHoverColor ? hoverColor : false" />
+    <svg-icon
+      :name="selectedIcon"
+      :hover-color="hasHoverColor ? hoverColor : false"
+      :size="selectedSize"
+    />
 
     <div class="modifications">
       <h2>Controls</h2>
@@ -29,8 +36,6 @@ const hoverColor = ref();
       </section>
 
       <section>
-        <h3>Hover color</h3>
-
         Enable hover color: <input type="checkbox" v-model="hasHoverColor" />
         <input
           type="text"
@@ -38,6 +43,15 @@ const hoverColor = ref();
           v-model="hoverColor"
           placeholder="type color: white by default"
         />
+      </section>
+
+      <section>
+        Change size:
+        <select name="icon" v-model="selectedSize">
+          <option v-for="size of availableSizes" :key="size" :value="size">
+            {{ size }}
+          </option>
+        </select>
       </section>
     </div>
   </main>
