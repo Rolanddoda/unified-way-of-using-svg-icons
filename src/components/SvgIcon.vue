@@ -55,9 +55,9 @@ export default {
     },
 
     hoverColorBind() {
-      if (!this.hoverColor) return;
+      if (this.hoverColor === false) return;
 
-      if (this.hoverColor === true) return "white";
+      if (this.hoverColor === true || !this.hoverColor) return "white";
       return this.getVarOrColorValue(this.hoverColor);
     },
 
@@ -87,7 +87,7 @@ export default {
     :width="svgSize"
     :height="svgSize"
     :stroke-width="strokeWidth"
-    :class="{ 'cursor-pointer add-hover': !!hoverColor }"
+    :class="{ 'add-hover': !!hoverColorBind }"
   />
 </template>
 
