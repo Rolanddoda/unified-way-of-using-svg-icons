@@ -1,3 +1,9 @@
+:root {
+  --q-slate: #B0B4C4;
+  --q-lilac: #E8E7FF;
+  --q-jam: #FF2A7A;
+}
+
 *,
 *::before,
 *::after {
