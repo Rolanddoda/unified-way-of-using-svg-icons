@@ -44,7 +44,7 @@ export default {
   computed: {
     dynamicComponent() {
       return defineAsyncComponent(() =>
-        import(`src/icons/${this.name.toLowerCase()}.vue`)
+        import(`./icons/${this.name.toLowerCase()}.vue`)
       );
     },
 
@@ -92,6 +92,7 @@ export default {
 <style lang="scss" scoped>
 .svg-icon {
   color: v-bind(colorBind);
+  transition: color 0.2s ease-in-out;
 
   &.add-hover:hover {
     color: v-bind(hoverColorBind);
