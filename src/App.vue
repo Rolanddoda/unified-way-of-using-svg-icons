@@ -10,7 +10,7 @@ const hasHoverColor = ref(false);
 const hoverColor = ref();
 
 const availableSizes = ["sm", "md", "lg", "xl"];
-const selectedSize = ref(availableSizes[1]);
+const selectedSize = ref(availableSizes[3]);
 </script>
 
 <template>
