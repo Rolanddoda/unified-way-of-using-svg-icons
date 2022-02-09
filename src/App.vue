@@ -15,7 +15,7 @@ const selectedSize = ref(availableSizes[1]);
 
 <template>
   <header>
-    <h1 class="h1">Unified way of using SVG Icons</h1>
+    <h1 class="h1 gradient-font">Unified way of using SVG Icons</h1>
   </header>
 
   <main>
@@ -31,11 +31,13 @@ const selectedSize = ref(availableSizes[1]);
 
       <section class="section">
         Change Icon:
-        <select name="icon" v-model="selectedIcon">
-          <option v-for="icon of availableIcons" :key="icon" :value="icon">
-            {{ icon }}
-          </option>
-        </select>
+        <q-select
+          v-model="selectedIcon"
+          :options="availableIcons"
+          dense
+          dark
+          outlined
+        />
       </section>
 
       <section class="section">
@@ -59,11 +61,13 @@ const selectedSize = ref(availableSizes[1]);
 
       <section class="section">
         Change size:
-        <select name="icon" v-model="selectedSize">
-          <option v-for="size of availableSizes" :key="size" :value="size">
-            {{ size }}
-          </option>
-        </select>
+        <q-select
+          v-model="selectedSize"
+          :options="availableSizes"
+          dense
+          dark
+          outlined
+        />
       </section>
     </div>
   </main>
@@ -79,8 +83,7 @@ const selectedSize = ref(availableSizes[1]);
   gap: 1rem;
 }
 
-.h1 {
-  font-size: 3rem;
+.gradient-font {
   font-weight: bold;
   background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
   background-clip: text;
