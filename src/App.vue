@@ -29,7 +29,7 @@ const cssVarColors = reactive({
     </header>
 
     <main class="main">
-      <div class="controls-area">
+      <div class="area controls-area">
         <h4 class="h4 text-indigo-3 text-center">Controls</h4>
 
         <section class="section">
@@ -51,7 +51,6 @@ const cssVarColors = reactive({
             outlined
             dark
             placeholder="type color: var:slate by default"
-            style="width: 250px"
           />
         </section>
 
@@ -71,7 +70,6 @@ const cssVarColors = reactive({
             outlined
             dark
             placeholder="type color: white by default"
-            style="width: 250px"
           />
         </section>
 
@@ -87,7 +85,7 @@ const cssVarColors = reactive({
         </section>
       </div>
 
-      <div class="icon-area">
+      <div class="area icon-area">
         <h4 class="h4 text-indigo-3 text-center">Result</h4>
         <svg-icon
           :name="selectedIcon"
@@ -97,8 +95,8 @@ const cssVarColors = reactive({
         />
       </div>
 
-      <div class="css-vars-area">
-        <h4 class="h4 text-indigo-3 text-center">CSS Variables</h4>
+      <div class="area css-vars-area">
+        <h4 class="h4 text-indigo-3 text-center q-mb-md">CSS Variables</h4>
 
         <q-input
           v-for="(colorValue, colorKey) in cssVarColors"
@@ -107,7 +105,7 @@ const cssVarColors = reactive({
           filled
           dark
           dense
-          class="my-input"
+          class="my-input q-mb-sm"
         >
           <template #prepend>
             <q-icon name="circle" :color="colorKey"></q-icon>
@@ -157,21 +155,22 @@ const cssVarColors = reactive({
 }
 
 .main {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 24px;
   width: 100%;
   padding: 32px;
+
+  > .area {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 24px;
+    min-width: 250px;
+    flex: 1;
+  }
 }
 
-.controls-area,
-.icon-area {
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  padding: 24px;
-}
-
-.controls {
+.controls-area {
   display: grid;
   align-items: start;
   gap: 16px;
