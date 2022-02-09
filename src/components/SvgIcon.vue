@@ -19,6 +19,12 @@ const sizes = {
     strokeWidth: 2.5,
   },
 };
+const defaults = {
+  color: "var:slate",
+  varPrefix: "q-",
+  hoverColor: "white",
+  size: sizes[3],
+};
 
 export default {
   props: {
@@ -29,7 +35,7 @@ export default {
 
     color: {
       type: String,
-      default: "var:slate",
+      default: defaults.color,
     },
 
     size: {
@@ -51,7 +57,7 @@ export default {
     },
 
     colorBind() {
-      const color = !this.color ? "var:slate" : this.color;
+      const color = !this.color ? defaults.color : this.color;
 
       return this.getVarOrColorValue(color);
     },
@@ -59,7 +65,8 @@ export default {
     hoverColorBind() {
       if (this.hoverColor === false) return;
 
-      if (this.hoverColor === true || !this.hoverColor) return "white";
+      if (this.hoverColor === true || !this.hoverColor)
+        return defaults.hoverColor;
       return this.getVarOrColorValue(this.hoverColor);
     },
 
@@ -75,7 +82,7 @@ export default {
   methods: {
     getVarOrColorValue(str) {
       return str.startsWith("var:")
-        ? str.replace(/^var:/, "var(--q-") + ")"
+        ? str.replace(/^var:/, `var(--${defaults.varPrefix}`) + ")"
         : str;
     },
   },
