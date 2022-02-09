@@ -4,6 +4,8 @@ import { ref } from "vue";
 const availableIcons = ["user", "search", "home"];
 const selectedIcon = ref(availableIcons[0]);
 
+const color = ref();
+
 const hasHoverColor = ref(false);
 const hoverColor = ref();
 
@@ -19,6 +21,7 @@ const selectedSize = ref(availableSizes[1]);
   <main>
     <svg-icon
       :name="selectedIcon"
+      :color="color"
       :hover-color="hasHoverColor ? hoverColor : false"
       :size="selectedSize"
     />
@@ -33,6 +36,15 @@ const selectedSize = ref(availableSizes[1]);
             {{ icon }}
           </option>
         </select>
+      </section>
+
+      <section>
+        Color:
+        <input
+          type="text"
+          v-model="color"
+          placeholder="type color: var:slate by default"
+        />
       </section>
 
       <section>
