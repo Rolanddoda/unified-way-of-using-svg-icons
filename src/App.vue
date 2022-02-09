@@ -109,7 +109,7 @@ const cssVarColors = reactive({
         >
           <template #prepend>
             <q-icon name="circle" :color="colorKey"></q-icon>
-            <small> --q-{{ colorKey }}:</small>
+            <small> --{{ colorKey }}:</small>
           </template>
           <template #append>
             <q-icon name="colorize" class="cursor-pointer">
