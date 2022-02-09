@@ -18,15 +18,8 @@ const selectedSize = ref(availableSizes[1]);
     <h1 class="h1 gradient-font">Unified way of using SVG Icons</h1>
   </header>
 
-  <main>
-    <svg-icon
-      :name="selectedIcon"
-      :color="color"
-      :hover-color="hasHoverColor ? hoverColor : false"
-      :size="selectedSize"
-    />
-
-    <div class="controls">
+  <main class="main">
+    <div class="controls-area">
       <h4 class="h4 text-indigo-3 text-center">Controls</h4>
 
       <section class="section">
@@ -83,6 +76,16 @@ const selectedSize = ref(availableSizes[1]);
         />
       </section>
     </div>
+
+    <div class="icon-area">
+      <h4 class="h4 text-indigo-3 text-center">Result</h4>
+      <svg-icon
+        :name="selectedIcon"
+        :color="color"
+        :hover-color="hasHoverColor ? hoverColor : false"
+        :size="selectedSize"
+      />
+    </div>
   </main>
 </template>
 
@@ -105,12 +108,30 @@ const selectedSize = ref(availableSizes[1]);
   text-align: center;
 }
 
-.controls {
-  border: 2px solid #ccc;
-  padding: 24px;
+.main {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  width: 100%;
+  padding: 32px;
+}
 
+.controls-area,
+.icon-area {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.controls {
   display: grid;
   align-items: start;
   gap: 16px;
+}
+
+.icon-area {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
 }
 </style>
