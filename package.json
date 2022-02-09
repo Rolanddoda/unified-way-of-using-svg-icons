@@ -9,9 +9,12 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@quasar/extras": "^1.12.5",
+    "quasar": "^2.5.4",
     "vue": "^3.2.29"
   },
   "devDependencies": {
+    "@quasar/vite-plugin": "^1.0.4",
     "@rushstack/eslint-patch": "^1.1.0",
     "@vitejs/plugin-vue": "^2.1.0",
     "@vue/eslint-config-prettier": "^7.0.0",
