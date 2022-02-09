@@ -27,7 +27,7 @@ const selectedSize = ref(availableSizes[1]);
     />
 
     <div class="controls">
-      <h2 class="control-header">Controls</h2>
+      <h4 class="h4 text-indigo-3 text-center">Controls</h4>
 
       <section class="section">
         Change Icon:
@@ -42,20 +42,33 @@ const selectedSize = ref(availableSizes[1]);
 
       <section class="section">
         Color:
-        <input
-          type="text"
+        <q-input
           v-model="color"
+          dense
+          outlined
+          dark
           placeholder="type color: var:slate by default"
+          style="width: 250px"
         />
       </section>
 
       <section class="section">
-        Enable hover color: <input type="checkbox" v-model="hasHoverColor" />
-        <input
-          type="text"
-          :disabled="!hasHoverColor"
+        Enable hover color:
+        <q-checkbox
+          dark
+          dense
+          type="checkbox"
+          v-model="hasHoverColor"
+          class="q-ma-sm"
+        />
+        <q-input
           v-model="hoverColor"
+          :disable="!hasHoverColor"
+          dense
+          outlined
+          dark
           placeholder="type color: white by default"
+          style="width: 250px"
         />
       </section>
 
@@ -99,19 +112,5 @@ const selectedSize = ref(availableSizes[1]);
   display: grid;
   align-items: start;
   gap: 16px;
-
-  .control-header {
-    text-decoration: underline;
-    margin: 0 auto;
-  }
-
-  .section {
-    padding: 8px 16px;
-    box-shadow: 0 0 10px black;
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    justify-content: space-between;
-  }
 }
 </style>
