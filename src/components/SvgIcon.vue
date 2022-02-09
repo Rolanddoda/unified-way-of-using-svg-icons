@@ -20,7 +20,7 @@ const sizes = {
   },
 };
 const defaults = {
-  color: "var:slate",
+  color: "var:primary",
   varPrefix: "q-",
   hoverColor: "white",
   size: sizes[3],
