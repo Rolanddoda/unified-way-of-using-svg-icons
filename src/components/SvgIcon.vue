@@ -40,7 +40,7 @@ export default {
 
     size: {
       type: String,
-      default: "md",
+      default: defaults.size,
       validator: (val) => Object.keys(sizes).includes(val),
     },
 
