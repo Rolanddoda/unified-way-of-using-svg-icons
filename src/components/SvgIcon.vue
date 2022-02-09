@@ -51,7 +51,9 @@ export default {
     },
 
     colorBind() {
-      return this.getVarOrColorValue(this.color);
+      const color = !this.color ? "var:slate" : this.color;
+
+      return this.getVarOrColorValue(color);
     },
 
     hoverColorBind() {
