@@ -54,7 +54,7 @@ const cssVarColors = reactive({
           dense
           outlined
           dark
-          placeholder="type color: var:slate by default"
+          placeholder="type color: var:primary by default"
         />
       </section>
 
@@ -93,6 +93,7 @@ const cssVarColors = reactive({
       <CodeSnippet>{{ code }}</CodeSnippet>
 
       <div class="icon-container">
+        <div class="bg"></div>
         <svg-icon
           :name="selectedIcon"
           :color="color"
@@ -116,7 +117,7 @@ const cssVarColors = reactive({
       >
         <template #prepend>
           <q-icon name="circle" :color="colorKey"></q-icon>
-          <small> --{{ colorKey }}:</small>
+          <small> {{ colorKey }}:</small>
         </template>
         <template #append>
           <q-icon name="colorize" class="cursor-pointer">
@@ -139,7 +140,7 @@ const cssVarColors = reactive({
 
 .gradient-font {
   font-weight: bold;
-  background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
+  background: linear-gradient(315deg, #42d392 25%, #647eff);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -181,16 +182,23 @@ const cssVarColors = reactive({
   flex: 1;
 
   .icon-container {
+    position: relative;
     display: grid;
     place-items: center;
     place-content: center;
-    background: linear-gradient(
-      140deg,
-      rgba(255, 99, 99, 0.2),
-      rgba(115, 52, 52.2)
-    );
     border-radius: 12px;
     padding: 32px;
+    box-shadow: 0 0 15px black;
+
+    .bg {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(66, 211, 146) 25%, #647eff);
+      filter: brightness(0.5);
+      opacity: 0.6;
+      z-index: -1;
+    }
   }
 }
 </style>
