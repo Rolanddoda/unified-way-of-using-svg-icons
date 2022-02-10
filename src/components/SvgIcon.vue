@@ -55,7 +55,7 @@ export default {
     },
 
     colorBind() {
-      const color = !this.color ? defaults.color : this.color
+      const color = this.color ? this.color : defaults.color
 
       return this.getVarOrColorValue(color)
     },
