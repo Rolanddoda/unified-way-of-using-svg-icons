@@ -18,7 +18,15 @@ html, body, #app {
   height: 100%;
 }
 
-#app {
+body {
   background: #202124;
   color: white;
+}
+
+#app {
+  padding: 24px;
+  overflow: auto;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-items: center;
 }

@@ -24,7 +24,7 @@ const cssVarColors = reactive({
 
 <template>
   <header>
-    <h1 class="h1 gradient-font">Unified way of using SVG Icons</h1>
+    <div class="gradient-font q-my-sm">Unified way of using SVG Icons</div>
   </header>
 
   <main class="main">
@@ -129,15 +129,6 @@ const cssVarColors = reactive({
 <style lang="scss">
 @import "css/base";
 
-#app {
-  --q-primary: v-bind("cssVarColors.primary");
-  --q-secondary: v-bind("cssVarColors.secondary");
-  --q-positive: v-bind("cssVarColors.positive");
-  --q-negative: v-bind("cssVarColors.negative");
-  --q-info: v-bind("cssVarColors.info");
-  --q-warning: v-bind("cssVarColors.warning");
-}
-
 .gradient-font {
   font-weight: bold;
   background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
@@ -145,14 +136,21 @@ const cssVarColors = reactive({
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
+  font-size: clamp(1.5rem, 9vw - 2rem, 5rem);
 }
 
 .main {
+  --q-primary: v-bind("cssVarColors.primary");
+  --q-secondary: v-bind("cssVarColors.secondary");
+  --q-positive: v-bind("cssVarColors.positive");
+  --q-negative: v-bind("cssVarColors.negative");
+  --q-info: v-bind("cssVarColors.info");
+  --q-warning: v-bind("cssVarColors.warning");
+
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
   width: 100%;
-  padding: 32px;
 
   > .area {
     border: 2px solid #ccc;
