@@ -30,7 +30,7 @@ defineProps(['code'])
 <style lang="scss" scoped>
 // Stolen design from https://ray.so
 .container {
-  padding: 32px;
+  padding: 24px 16px;
   display: grid;
   place-items: center;
   border-radius: 12px;
@@ -40,7 +40,9 @@ defineProps(['code'])
 .code-snippet {
   position: relative;
   border-radius: 12px;
-  min-width: 200px;
+  min-width: 250px;
+  width: 100%;
+  font-size: 1.7rem;
 
   .shadow,
   .shadow-background {
