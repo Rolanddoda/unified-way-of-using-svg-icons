@@ -1,51 +1,54 @@
 <script setup>
-import { computed, reactive, ref } from "vue";
-import CodeSnippet from "./components/CodeSnippet.vue";
+import { computed, reactive, ref } from 'vue'
+// Components
+import AppSelect from './components/AppSelect.vue'
+import AppInput from './components/AppInput.vue'
+import CodeSnippet from './components/CodeSnippet.vue'
 
-const availableIcons = ["user", "search", "home"];
-const selectedIcon = ref(availableIcons[0]);
+const availableIcons = ['user', 'search', 'home']
+const selectedIcon = ref(availableIcons[0])
 
-const color = ref();
+const color = ref()
 
-const hasHoverColor = ref(false);
-const hoverColor = ref();
+const hasHoverColor = ref(false)
+const hoverColor = ref()
 
-const availableSizes = ["sm", "md", "lg", "xl"];
-const selectedSize = ref(availableSizes[3]);
+const availableSizes = ['sm', 'md', 'lg', 'xl']
+const selectedSize = ref(availableSizes[3])
 
 const cssVarColors = reactive({
-  primary: "#007bff",
-  secondary: "#6c757d",
-  positive: "#28a745",
-  negative: "#dc3545",
-  info: "#17a2b8",
-  warning: "#ffc107",
-});
+  primary: '#007bff',
+  secondary: '#6c757d',
+  positive: '#28a745',
+  negative: '#dc3545',
+  info: '#17a2b8',
+  warning: '#ffc107'
+})
 
 const code = computed(() => {
-  let code = "<svg-icon";
-  code += `\n name="${selectedIcon.value}"`;
+  let code = '<svg-icon'
+  code += `\n name="${selectedIcon.value}"`
 
-  if (selectedSize.value !== "xl") {
-    code += `\n size="${selectedSize.value}"`;
+  if (selectedSize.value !== 'xl') {
+    code += `\n size="${selectedSize.value}"`
   }
 
   if (color.value) {
-    code += `\n color="${color.value}"`;
+    code += `\n color="${color.value}"`
   }
 
   if (hasHoverColor.value) {
     if (!hoverColor.value) {
-      code += `\n hover-color`;
+      code += `\n hover-color`
     } else {
-      code += `\n hover-color="${hoverColor.value}"`;
+      code += `\n hover-color="${hoverColor.value}"`
     }
   }
 
-  code += `\n/>`;
+  code += `\n/>`
 
-  return code;
-});
+  return code
+})
 </script>
 
 <template>
@@ -59,54 +62,23 @@ const code = computed(() => {
 
       <section class="section">
         Change Icon:
-        <q-select
-          v-model="selectedIcon"
-          :options="availableIcons"
-          dense
-          dark
-          outlined
-        />
+        <AppSelect v-model="selectedIcon" :options="availableIcons" />
       </section>
 
       <section class="section">
         Change size:
-        <q-select
-          v-model="selectedSize"
-          :options="availableSizes"
-          dense
-          dark
-          outlined
-        />
+        <AppSelect v-model="selectedSize" :options="availableSizes" />
       </section>
 
       <section class="section">
         Color:
-        <q-input
-          v-model="color"
-          dense
-          outlined
-          dark
-          placeholder="type color: var:primary by default"
-        />
+        <AppInput v-model="color" placeholder="var:primary by default" />
       </section>
 
       <section class="section">
         Enable hover color:
-        <q-checkbox
-          dark
-          dense
-          type="checkbox"
-          v-model="hasHoverColor"
-          class="q-ma-sm"
-        />
-        <q-input
-          v-model="hoverColor"
-          :disable="!hasHoverColor"
-          dense
-          outlined
-          dark
-          placeholder="type color: white by default"
-        />
+        <q-checkbox dark dense type="checkbox" v-model="hasHoverColor" class="q-ma-sm" />
+        <AppInput v-model="hoverColor" :disable="!hasHoverColor" placeholder="white by default" />
       </section>
     </div>
 
@@ -142,11 +114,7 @@ const code = computed(() => {
         </template>
         <template #append>
           <q-icon name="colorize" class="cursor-pointer">
-            <q-popup-proxy
-              cover
-              transition-show="scale"
-              transition-hide="scale"
-            >
+            <q-popup-proxy cover transition-show="scale" transition-hide="scale">
               <q-color v-model="cssVarColors[colorKey]" />
             </q-popup-proxy>
           </q-icon>
@@ -157,7 +125,7 @@ const code = computed(() => {
 </template>
 
 <style lang="scss">
-@import "css/base";
+@import 'css/base';
 
 .gradient-font {
   font-weight: bold;
@@ -170,12 +138,12 @@ const code = computed(() => {
 }
 
 .main {
-  --q-primary: v-bind("cssVarColors.primary");
-  --q-secondary: v-bind("cssVarColors.secondary");
-  --q-positive: v-bind("cssVarColors.positive");
-  --q-negative: v-bind("cssVarColors.negative");
-  --q-info: v-bind("cssVarColors.info");
-  --q-warning: v-bind("cssVarColors.warning");
+  --q-primary: v-bind('cssVarColors.primary');
+  --q-secondary: v-bind('cssVarColors.secondary');
+  --q-positive: v-bind('cssVarColors.positive');
+  --q-negative: v-bind('cssVarColors.negative');
+  --q-info: v-bind('cssVarColors.info');
+  --q-warning: v-bind('cssVarColors.warning');
 
   display: flex;
   flex-wrap: wrap;
