@@ -23,9 +23,26 @@ const cssVarColors = reactive({
 });
 
 const code = computed(() => {
-  let code = `
-    <svg-icon name="${selectedIcon.value}" />
-  `;
+  let code = "<svg-icon";
+  code += `\n name="${selectedIcon.value}"`;
+
+  if (selectedSize.value !== "xl") {
+    code += `\n size="${selectedSize.value}"`;
+  }
+
+  if (color.value) {
+    code += `\n color="${color.value}"`;
+  }
+
+  if (hasHoverColor.value) {
+    if (!hoverColor.value) {
+      code += `\n hover-color`;
+    } else {
+      code += `\n hover-color="${hoverColor.value}"`;
+    }
+  }
+
+  code += `\n/>`;
 
   return code;
 });

@@ -2,8 +2,11 @@
 // eslint-disable-next-line no-unused-vars
 import hljs from "highlight.js/lib/common";
 import hljsVuePlugin from "@highlightjs/vue-plugin";
+import { defineProps } from "vue";
 
 const highlightjs = hljsVuePlugin.component;
+
+defineProps(["code"]);
 </script>
 
 <template>
@@ -18,16 +21,14 @@ const highlightjs = hljsVuePlugin.component;
           <div v-for="i in 3" :key="i" class="circle"></div>
         </div>
 
-        <highlightjs
-          language="html"
-          code="<svg-icon name='Roland'>Hui</svg-icon>"
-        />
+        <highlightjs language="html" :code="code" />
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+// Stolen design from https://ray.so
 .container {
   padding: 32px;
   display: grid;
@@ -39,6 +40,7 @@ const highlightjs = hljsVuePlugin.component;
 .code-snippet {
   position: relative;
   border-radius: 12px;
+  min-width: 200px;
 
   .shadow,
   .shadow-background {
