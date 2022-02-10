@@ -1,13 +1,9 @@
 <script setup>
-import { onMounted } from "vue";
+// eslint-disable-next-line no-unused-vars
 import hljs from "highlight.js/lib/common";
 import hljsVuePlugin from "@highlightjs/vue-plugin";
 
 const highlightjs = hljsVuePlugin.component;
-
-onMounted(() => {
-  hljs.highlightElement(document.querySelector("code"));
-});
 </script>
 
 <template>

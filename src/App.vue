@@ -1,10 +1,6 @@
 <script setup>
-import { reactive, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import CodeSnippet from "./components/CodeSnippet.vue";
-
-const code = `
-<svg-icon>Hey</svg-icon>
-`;
 
 const availableIcons = ["user", "search", "home"];
 const selectedIcon = ref(availableIcons[0]);
@@ -24,6 +20,14 @@ const cssVarColors = reactive({
   negative: "#dc3545",
   info: "#17a2b8",
   warning: "#ffc107",
+});
+
+const code = computed(() => {
+  let code = `
+    <svg-icon name="${selectedIcon.value}" />
+  `;
+
+  return code;
 });
 </script>
 
@@ -90,7 +94,7 @@ const cssVarColors = reactive({
     </div>
 
     <div class="result-area">
-      <CodeSnippet>{{ code }}</CodeSnippet>
+      <CodeSnippet :code="code" />
 
       <div class="icon-container">
         <div class="bg"></div>
