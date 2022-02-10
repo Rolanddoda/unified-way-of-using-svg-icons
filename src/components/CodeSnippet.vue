@@ -1,12 +1,12 @@
 <script setup>
 // eslint-disable-next-line no-unused-vars
-import hljs from "highlight.js/lib/common";
-import hljsVuePlugin from "@highlightjs/vue-plugin";
-import { defineProps } from "vue";
+import hljs from 'highlight.js/lib/common'
+import hljsVuePlugin from '@highlightjs/vue-plugin'
+import { defineProps } from 'vue'
 
-const highlightjs = hljsVuePlugin.component;
+const highlightjs = hljsVuePlugin.component
 
-defineProps(["code"]);
+defineProps(['code'])
 </script>
 
 <template>
@@ -54,7 +54,7 @@ defineProps(["code"]);
 
   .shadow:after {
     position: absolute;
-    content: "";
+    content: '';
     left: 0;
     top: 24px;
     width: 100%;

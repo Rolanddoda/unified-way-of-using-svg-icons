@@ -1,92 +1,87 @@
 <script>
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent } from 'vue'
 
 const sizes = {
   sm: {
     size: 16,
-    strokeWidth: 1,
+    strokeWidth: 1
   },
   md: {
     size: 24,
-    strokeWidth: 1,
+    strokeWidth: 1
   },
   lg: {
     size: 32,
-    strokeWidth: 2,
+    strokeWidth: 2
   },
   xl: {
     size: 48,
-    strokeWidth: 2.5,
-  },
-};
+    strokeWidth: 2.5
+  }
+}
 const defaults = {
-  color: "var:primary",
-  varPrefix: "q-",
-  hoverColor: "white",
-  size: sizes[3],
-};
+  color: 'var:primary',
+  varPrefix: 'q-',
+  hoverColor: 'white',
+  size: sizes[3]
+}
 
 export default {
   props: {
     name: {
       type: String,
-      required: true,
+      required: true
     },
 
     color: {
       type: String,
-      default: defaults.color,
+      default: defaults.color
     },
 
     size: {
       type: String,
       default: defaults.size,
-      validator: (val) => Object.keys(sizes).includes(val),
+      validator: (val) => Object.keys(sizes).includes(val)
     },
 
-    hoverColor: [Boolean, String],
+    hoverColor: [Boolean, String]
   },
 
   computed: {
     dynamicComponent() {
-      const name = this.name;
+      const name = this.name
 
-      return defineAsyncComponent(() =>
-        import(`./icons/${name.toLowerCase()}.vue`)
-      );
+      return defineAsyncComponent(() => import(`./icons/${name.toLowerCase()}.vue`))
     },
 
     colorBind() {
-      const color = !this.color ? defaults.color : this.color;
+      const color = !this.color ? defaults.color : this.color
 
-      return this.getVarOrColorValue(color);
+      return this.getVarOrColorValue(color)
     },
 
     hoverColorBind() {
-      if (this.hoverColor === false) return;
+      if (this.hoverColor === false) return
 
-      if (this.hoverColor === true || !this.hoverColor)
-        return defaults.hoverColor;
-      return this.getVarOrColorValue(this.hoverColor);
+      if (this.hoverColor === true || !this.hoverColor) return defaults.hoverColor
+      return this.getVarOrColorValue(this.hoverColor)
     },
 
     svgSize() {
-      return sizes[this.size].size;
+      return sizes[this.size].size
     },
 
     strokeWidth() {
-      return sizes[this.size].strokeWidth;
-    },
+      return sizes[this.size].strokeWidth
+    }
   },
 
   methods: {
     getVarOrColorValue(str) {
-      return str.startsWith("var:")
-        ? str.replace(/^var:/, `var(--${defaults.varPrefix}`) + ")"
-        : str;
-    },
-  },
-};
+      return str.startsWith('var:') ? str.replace(/^var:/, `var(--${defaults.varPrefix}`) + ')' : str
+    }
+  }
+}
 </script>
 
 <template>
