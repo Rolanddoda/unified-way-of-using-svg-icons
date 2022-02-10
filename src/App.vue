@@ -69,6 +69,17 @@ const code = computed(() => {
       </section>
 
       <section class="section">
+        Change size:
+        <q-select
+          v-model="selectedSize"
+          :options="availableSizes"
+          dense
+          dark
+          outlined
+        />
+      </section>
+
+      <section class="section">
         Color:
         <q-input
           v-model="color"
@@ -95,17 +106,6 @@ const code = computed(() => {
           outlined
           dark
           placeholder="type color: white by default"
-        />
-      </section>
-
-      <section class="section">
-        Change size:
-        <q-select
-          v-model="selectedSize"
-          :options="availableSizes"
-          dense
-          dark
-          outlined
         />
       </section>
     </div>
