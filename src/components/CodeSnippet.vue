@@ -33,10 +33,10 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .container {
-  padding: 2px 8px;
+  padding: 32px;
   display: grid;
   place-items: center;
-  border-radius: inherit;
+  border-radius: 12px;
   background: linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236));
 }
 

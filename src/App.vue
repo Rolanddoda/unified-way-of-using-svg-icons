@@ -1,5 +1,10 @@
 <script setup>
 import { reactive, ref } from "vue";
+import CodeSnippet from "./components/CodeSnippet.vue";
+
+const code = `
+<svg-icon>Hey</svg-icon>
+`;
 
 const availableIcons = ["user", "search", "home"];
 const selectedIcon = ref(availableIcons[0]);
@@ -84,14 +89,17 @@ const cssVarColors = reactive({
       </section>
     </div>
 
-    <div class="area icon-area">
-      <h4 class="h4 text-indigo-3 text-center">Result</h4>
-      <svg-icon
-        :name="selectedIcon"
-        :color="color"
-        :hover-color="hasHoverColor ? hoverColor : false"
-        :size="selectedSize"
-      />
+    <div class="result-area">
+      <CodeSnippet>{{ code }}</CodeSnippet>
+
+      <div class="icon-container">
+        <svg-icon
+          :name="selectedIcon"
+          :color="color"
+          :hover-color="hasHoverColor ? hoverColor : false"
+          :size="selectedSize"
+        />
+      </div>
     </div>
 
     <div class="area css-vars-area">
@@ -167,9 +175,22 @@ const cssVarColors = reactive({
   gap: 16px;
 }
 
-.icon-area {
+.result-area {
   display: grid;
-  justify-content: center;
-  justify-items: center;
+  gap: 16px;
+  flex: 1;
+
+  .icon-container {
+    display: grid;
+    place-items: center;
+    place-content: center;
+    background: linear-gradient(
+      140deg,
+      rgba(255, 99, 99, 0.2),
+      rgba(115, 52, 52.2)
+    );
+    border-radius: 12px;
+    padding: 32px;
+  }
 }
 </style>
