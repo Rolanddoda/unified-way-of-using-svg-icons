@@ -23,109 +23,107 @@ const cssVarColors = reactive({
 </script>
 
 <template>
-  <div id="app">
-    <header>
-      <h1 class="h1 gradient-font">Unified way of using SVG Icons</h1>
-    </header>
+  <header>
+    <h1 class="h1 gradient-font">Unified way of using SVG Icons</h1>
+  </header>
 
-    <main class="main">
-      <div class="area controls-area">
-        <h4 class="h4 text-indigo-3 text-center">Controls</h4>
+  <main class="main">
+    <div class="area controls-area">
+      <h4 class="h4 text-indigo-3 text-center">Controls</h4>
 
-        <section class="section">
-          Change Icon:
-          <q-select
-            v-model="selectedIcon"
-            :options="availableIcons"
-            dense
-            dark
-            outlined
-          />
-        </section>
-
-        <section class="section">
-          Color:
-          <q-input
-            v-model="color"
-            dense
-            outlined
-            dark
-            placeholder="type color: var:slate by default"
-          />
-        </section>
-
-        <section class="section">
-          Enable hover color:
-          <q-checkbox
-            dark
-            dense
-            type="checkbox"
-            v-model="hasHoverColor"
-            class="q-ma-sm"
-          />
-          <q-input
-            v-model="hoverColor"
-            :disable="!hasHoverColor"
-            dense
-            outlined
-            dark
-            placeholder="type color: white by default"
-          />
-        </section>
-
-        <section class="section">
-          Change size:
-          <q-select
-            v-model="selectedSize"
-            :options="availableSizes"
-            dense
-            dark
-            outlined
-          />
-        </section>
-      </div>
-
-      <div class="area icon-area">
-        <h4 class="h4 text-indigo-3 text-center">Result</h4>
-        <svg-icon
-          :name="selectedIcon"
-          :color="color"
-          :hover-color="hasHoverColor ? hoverColor : false"
-          :size="selectedSize"
+      <section class="section">
+        Change Icon:
+        <q-select
+          v-model="selectedIcon"
+          :options="availableIcons"
+          dense
+          dark
+          outlined
         />
-      </div>
+      </section>
 
-      <div class="area css-vars-area">
-        <h4 class="h4 text-indigo-3 text-center q-mb-md">CSS Variables</h4>
-
+      <section class="section">
+        Color:
         <q-input
-          v-for="(colorValue, colorKey) in cssVarColors"
-          v-model="cssVarColors[colorKey]"
-          :key="colorKey"
-          filled
+          v-model="color"
+          dense
+          outlined
+          dark
+          placeholder="type color: var:slate by default"
+        />
+      </section>
+
+      <section class="section">
+        Enable hover color:
+        <q-checkbox
           dark
           dense
-          class="my-input q-mb-sm"
-        >
-          <template #prepend>
-            <q-icon name="circle" :color="colorKey"></q-icon>
-            <small> --{{ colorKey }}:</small>
-          </template>
-          <template #append>
-            <q-icon name="colorize" class="cursor-pointer">
-              <q-popup-proxy
-                cover
-                transition-show="scale"
-                transition-hide="scale"
-              >
-                <q-color v-model="cssVarColors[colorKey]" />
-              </q-popup-proxy>
-            </q-icon>
-          </template>
-        </q-input>
-      </div>
-    </main>
-  </div>
+          type="checkbox"
+          v-model="hasHoverColor"
+          class="q-ma-sm"
+        />
+        <q-input
+          v-model="hoverColor"
+          :disable="!hasHoverColor"
+          dense
+          outlined
+          dark
+          placeholder="type color: white by default"
+        />
+      </section>
+
+      <section class="section">
+        Change size:
+        <q-select
+          v-model="selectedSize"
+          :options="availableSizes"
+          dense
+          dark
+          outlined
+        />
+      </section>
+    </div>
+
+    <div class="area icon-area">
+      <h4 class="h4 text-indigo-3 text-center">Result</h4>
+      <svg-icon
+        :name="selectedIcon"
+        :color="color"
+        :hover-color="hasHoverColor ? hoverColor : false"
+        :size="selectedSize"
+      />
+    </div>
+
+    <div class="area css-vars-area">
+      <h4 class="h4 text-indigo-3 text-center q-mb-md">CSS Variables</h4>
+
+      <q-input
+        v-for="(colorValue, colorKey) in cssVarColors"
+        v-model="cssVarColors[colorKey]"
+        :key="colorKey"
+        filled
+        dark
+        dense
+        class="my-input q-mb-sm"
+      >
+        <template #prepend>
+          <q-icon name="circle" :color="colorKey"></q-icon>
+          <small> --{{ colorKey }}:</small>
+        </template>
+        <template #append>
+          <q-icon name="colorize" class="cursor-pointer">
+            <q-popup-proxy
+              cover
+              transition-show="scale"
+              transition-hide="scale"
+            >
+              <q-color v-model="cssVarColors[colorKey]" />
+            </q-popup-proxy>
+          </q-icon>
+        </template>
+      </q-input>
+    </div>
+  </main>
 </template>
 
 <style lang="scss">
@@ -138,11 +136,6 @@ const cssVarColors = reactive({
   --q-negative: v-bind("cssVarColors.negative");
   --q-info: v-bind("cssVarColors.info");
   --q-warning: v-bind("cssVarColors.warning");
-
-  display: grid;
-  place-content: center;
-  place-items: center;
-  gap: 1rem;
 }
 
 .gradient-font {
@@ -165,7 +158,7 @@ const cssVarColors = reactive({
     border: 2px solid #ccc;
     border-radius: 8px;
     padding: 24px;
-    min-width: 250px;
+    min-width: 300px;
     flex: 1;
   }
 }
