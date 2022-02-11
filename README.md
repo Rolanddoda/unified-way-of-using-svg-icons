@@ -1,10 +1,11 @@
-# unified-svg-icons
+## What is it?
+
+It's an interactive demo made with Vue 3, Vite, Quasar for the article [Unified way of using SVG icons](https://github.com/Rolanddoda/articles/blob/main/unified-way-of-using-svg-icons.md).
+
+- [See it online](https://vbwippnrg--github--3000.local.webcontainer.io)
+- [See the source code](https://stackblitz.com/github/vbwippnrg?devtoolsheight=33&file=src/components/SvgIcon.vue)
 
 This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
 
 ## Customize configuration
 
@@ -26,12 +27,6 @@ npm run dev
 
 ```sh
 npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
