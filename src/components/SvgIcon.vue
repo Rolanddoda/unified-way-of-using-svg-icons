@@ -23,7 +23,7 @@ const defaults = {
   color: 'var:primary',
   varPrefix: 'q-',
   hoverColor: 'white',
-  size: sizes[3]
+  size: 'xl'
 }
 
 export default {
