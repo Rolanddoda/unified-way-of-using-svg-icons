@@ -49,9 +49,9 @@ export default {
 
   computed: {
     dynamicComponent() {
-      const name = this.name
+      const name = this.name.charAt(0).toUpperCase() + this.name.slice(1) + 'Icon'
 
-      return defineAsyncComponent(() => import(`./icons/${name.toLowerCase()}.vue`))
+      return defineAsyncComponent(() => import(`./icons/${name}.vue`))
     },
 
     colorBind() {
@@ -93,6 +93,7 @@ export default {
     :stroke-width="strokeWidth"
     :class="{ 'add-hover': !!hoverColorBind }"
   />
+  <!--  <div></div>-->
 </template>
 
 <style lang="scss" scoped>

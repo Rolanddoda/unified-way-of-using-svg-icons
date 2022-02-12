@@ -8,7 +8,6 @@ module.exports = {
     'vue/setup-compiler-macros': true
   },
   rules: {
-    'vue/multi-word-component-names': 'off',
     'prettier/prettier': [
       'warn',
       {
