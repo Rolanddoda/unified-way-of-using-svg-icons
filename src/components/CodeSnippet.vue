@@ -2,7 +2,6 @@
 // eslint-disable-next-line no-unused-vars
 import hljs from 'highlight.js/lib/common'
 import hljsVuePlugin from '@highlightjs/vue-plugin'
-import { defineProps } from 'vue'
 
 const highlightjs = hljsVuePlugin.component
 

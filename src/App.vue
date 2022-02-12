@@ -1,8 +1,6 @@
 <script setup>
 import { computed, reactive, ref } from 'vue'
 // Components
-import AppSelect from './components/AppSelect.vue'
-import AppInput from './components/AppInput.vue'
 import CodeSnippet from './components/CodeSnippet.vue'
 
 const availableIcons = ['user', 'search', 'home']
@@ -87,7 +85,7 @@ const code = computed(() => {
 
       <div class="icon-container">
         <div class="bg"></div>
-        <svg-icon
+        <SvgIcon
           :name="selectedIcon"
           :color="color"
           :hover-color="hasHoverColor ? hoverColor : false"

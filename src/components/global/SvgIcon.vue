@@ -51,7 +51,7 @@ export default {
     dynamicComponent() {
       const name = this.name.charAt(0).toUpperCase() + this.name.slice(1) + 'Icon'
 
-      return defineAsyncComponent(() => import(`./icons/${name}.vue`))
+      return defineAsyncComponent(() => import(`../icons/${name}.vue`))
     },
 
     colorBind() {
