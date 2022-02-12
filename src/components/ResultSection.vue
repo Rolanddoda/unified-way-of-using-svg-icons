@@ -1,14 +1,11 @@
 <script setup>
 import { useGlobalStore } from '@/stores/global-store'
-import CodeSnippet from './CodeSnippet.vue'
 
 const globalStore = useGlobalStore()
 </script>
 
 <template>
   <div class="result-area">
-    <CodeSnippet :code="globalStore.generatedCode" />
-
     <div class="icon-container">
       <div class="bg"></div>
       <SvgIcon

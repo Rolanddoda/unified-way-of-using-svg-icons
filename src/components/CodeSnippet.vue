@@ -2,10 +2,10 @@
 // eslint-disable-next-line no-unused-vars
 import hljs from 'highlight.js/lib/common'
 import hljsVuePlugin from '@highlightjs/vue-plugin'
+import { useGlobalStore } from '@/stores/global-store'
 
 const highlightjs = hljsVuePlugin.component
-
-defineProps(['code'])
+const globalStore = useGlobalStore()
 </script>
 
 <template>
@@ -20,7 +20,7 @@ defineProps(['code'])
           <div v-for="i in 3" :key="i" class="circle"></div>
         </div>
 
-        <highlightjs language="html" :code="code" />
+        <highlightjs language="html" :code="globalStore.generatedCode" />
       </div>
     </div>
   </div>

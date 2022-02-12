@@ -1,6 +1,8 @@
 <script setup>
 import { useGlobalStore } from '@/stores/global-store'
+// Components
 import ControlsSection from '@/components/ControlsSection.vue'
+import CodeSnippet from '@/components/CodeSnippet.vue'
 import ResultSection from '@/components/ResultSection.vue'
 import VariablesSection from '@/components/VariablesSection.vue'
 
@@ -12,10 +14,11 @@ const globalStore = useGlobalStore()
     <div class="gradient-font q-my-sm">Unified way of using SVG Icons</div>
   </header>
 
-  <main class="main">
-    <ControlsSection />
-    <ResultSection />
-    <VariablesSection />
+  <main class="main row">
+    <ControlsSection class="col-12 col-sm-6" />
+    <CodeSnippet class="col-12 col-sm-6" />
+    <ResultSection class="col-12 col-sm-6" />
+    <VariablesSection class="col-12 col-sm-12" />
   </main>
 </template>
 
@@ -30,9 +33,7 @@ const globalStore = useGlobalStore()
   --q-info: v-bind('globalStore.cssVarColors.info');
   --q-warning: v-bind('globalStore.cssVarColors.warning');
 
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
   width: 100%;
+  gap: 24px;
 }
 </style>
