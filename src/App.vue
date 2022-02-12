@@ -2,6 +2,7 @@
 import { useGlobalStore } from '@/stores/global-store'
 import ControlsSection from '@/components/ControlsSection.vue'
 import ResultSection from '@/components/ResultSection.vue'
+import VariablesSection from '@/components/VariablesSection.vue'
 
 const globalStore = useGlobalStore()
 </script>
@@ -14,32 +15,7 @@ const globalStore = useGlobalStore()
   <main class="main">
     <ControlsSection />
     <ResultSection />
-
-    <div class="area css-vars-area">
-      <h4 class="h4 text-indigo-3 text-center q-mb-md">CSS Variables</h4>
-
-      <q-input
-        v-for="(colorValue, colorKey) in globalStore.cssVarColors"
-        v-model="globalStore.cssVarColors[colorKey]"
-        :key="colorKey"
-        filled
-        dark
-        dense
-        class="my-input q-mb-sm"
-      >
-        <template #prepend>
-          <q-icon name="circle" :color="colorKey"></q-icon>
-          <small> {{ colorKey }}:</small>
-        </template>
-        <template #append>
-          <q-icon name="colorize" class="cursor-pointer">
-            <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-              <q-color v-model="globalStore.cssVarColors[colorKey]" />
-            </q-popup-proxy>
-          </q-icon>
-        </template>
-      </q-input>
-    </div>
+    <VariablesSection />
   </main>
 </template>
 
