@@ -1,7 +1,7 @@
 <script setup>
-import { useGlobalStore } from './stores/global-store'
-import ControlsSection from './components/ControlsSection.vue'
-import CodeSnippet from './components/CodeSnippet.vue'
+import { useGlobalStore } from '@/stores/global-store'
+import ControlsSection from '@/components/ControlsSection.vue'
+import ResultSection from '@/components/ResultSection.vue'
 
 const globalStore = useGlobalStore()
 </script>
@@ -13,20 +13,7 @@ const globalStore = useGlobalStore()
 
   <main class="main">
     <ControlsSection />
-
-    <div class="result-area">
-      <CodeSnippet :code="globalStore.generatedCode" />
-
-      <div class="icon-container">
-        <div class="bg"></div>
-        <SvgIcon
-          :name="globalStore.selectedIcon"
-          :color="globalStore.color"
-          :hover-color="globalStore.hasHoverColor ? globalStore.hoverColor : false"
-          :size="globalStore.selectedSize"
-        />
-      </div>
-    </div>
+    <ResultSection />
 
     <div class="area css-vars-area">
       <h4 class="h4 text-indigo-3 text-center q-mb-md">CSS Variables</h4>
@@ -88,32 +75,6 @@ const globalStore = useGlobalStore()
     padding: 24px;
     min-width: 300px;
     flex: 1;
-  }
-}
-
-.result-area {
-  display: grid;
-  gap: 16px;
-  flex: 1;
-
-  .icon-container {
-    position: relative;
-    display: grid;
-    place-items: center;
-    place-content: center;
-    border-radius: 12px;
-    padding: 32px;
-    box-shadow: 0 0 15px black;
-
-    .bg {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: linear-gradient(135deg, rgba(66, 211, 146) 25%, #647eff);
-      filter: brightness(0.5);
-      opacity: 0.6;
-      z-index: -1;
-    }
   }
 }
 </style>
