@@ -1,52 +1,9 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
-// Components
+import { useGlobalStore } from './stores/global-store'
+import ControlsSection from './components/ControlsSection.vue'
 import CodeSnippet from './components/CodeSnippet.vue'
 
-const availableIcons = ['user', 'search', 'home']
-const selectedIcon = ref(availableIcons[0])
-
-const color = ref()
-
-const hasHoverColor = ref(false)
-const hoverColor = ref()
-
-const availableSizes = ['sm', 'md', 'lg', 'xl']
-const selectedSize = ref(availableSizes[3])
-
-const cssVarColors = reactive({
-  primary: '#007bff',
-  secondary: '#6c757d',
-  positive: '#28a745',
-  negative: '#dc3545',
-  info: '#17a2b8',
-  warning: '#ffc107'
-})
-
-const code = computed(() => {
-  let code = '<svg-icon'
-  code += `\n name="${selectedIcon.value}"`
-
-  if (selectedSize.value !== 'xl') {
-    code += `\n size="${selectedSize.value}"`
-  }
-
-  if (color.value) {
-    code += `\n color="${color.value}"`
-  }
-
-  if (hasHoverColor.value) {
-    if (!hoverColor.value) {
-      code += `\n hover-color`
-    } else {
-      code += `\n hover-color="${hoverColor.value}"`
-    }
-  }
-
-  code += `\n/>`
-
-  return code
-})
+const globalStore = useGlobalStore()
 </script>
 
 <template>
@@ -55,41 +12,18 @@ const code = computed(() => {
   </header>
 
   <main class="main">
-    <div class="area controls-area">
-      <h4 class="h4 text-indigo-3 text-center">Controls</h4>
-
-      <section class="section">
-        Change Icon:
-        <AppSelect v-model="selectedIcon" :options="availableIcons" />
-      </section>
-
-      <section class="section">
-        Change size:
-        <AppSelect v-model="selectedSize" :options="availableSizes" />
-      </section>
-
-      <section class="section">
-        Color:
-        <AppInput v-model="color" placeholder="var:primary by default" />
-      </section>
-
-      <section class="section">
-        Enable hover color:
-        <q-checkbox dark dense type="checkbox" v-model="hasHoverColor" class="q-ma-sm" />
-        <AppInput v-model="hoverColor" :disable="!hasHoverColor" placeholder="white by default" />
-      </section>
-    </div>
+    <ControlsSection />
 
     <div class="result-area">
-      <CodeSnippet :code="code" />
+      <CodeSnippet :code="globalStore.generatedCode" />
 
       <div class="icon-container">
         <div class="bg"></div>
         <SvgIcon
-          :name="selectedIcon"
-          :color="color"
-          :hover-color="hasHoverColor ? hoverColor : false"
-          :size="selectedSize"
+          :name="globalStore.selectedIcon"
+          :color="globalStore.color"
+          :hover-color="globalStore.hasHoverColor ? globalStore.hoverColor : false"
+          :size="globalStore.selectedSize"
         />
       </div>
     </div>
@@ -98,8 +32,8 @@ const code = computed(() => {
       <h4 class="h4 text-indigo-3 text-center q-mb-md">CSS Variables</h4>
 
       <q-input
-        v-for="(colorValue, colorKey) in cssVarColors"
-        v-model="cssVarColors[colorKey]"
+        v-for="(colorValue, colorKey) in globalStore.cssVarColors"
+        v-model="globalStore.cssVarColors[colorKey]"
         :key="colorKey"
         filled
         dark
@@ -113,7 +47,7 @@ const code = computed(() => {
         <template #append>
           <q-icon name="colorize" class="cursor-pointer">
             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-              <q-color v-model="cssVarColors[colorKey]" />
+              <q-color v-model="globalStore.cssVarColors[colorKey]" />
             </q-popup-proxy>
           </q-icon>
         </template>
@@ -136,12 +70,12 @@ const code = computed(() => {
 }
 
 .main {
-  --q-primary: v-bind('cssVarColors.primary');
-  --q-secondary: v-bind('cssVarColors.secondary');
-  --q-positive: v-bind('cssVarColors.positive');
-  --q-negative: v-bind('cssVarColors.negative');
-  --q-info: v-bind('cssVarColors.info');
-  --q-warning: v-bind('cssVarColors.warning');
+  --q-primary: v-bind('globalStore.cssVarColors.primary');
+  --q-secondary: v-bind('globalStore.cssVarColors.secondary');
+  --q-positive: v-bind('globalStore.cssVarColors.positive');
+  --q-negative: v-bind('globalStore.cssVarColors.negative');
+  --q-info: v-bind('globalStore.cssVarColors.info');
+  --q-warning: v-bind('globalStore.cssVarColors.warning');
 
   display: flex;
   flex-wrap: wrap;
@@ -155,12 +89,6 @@ const code = computed(() => {
     min-width: 300px;
     flex: 1;
   }
-}
-
-.controls-area {
-  display: grid;
-  align-items: start;
-  gap: 16px;
 }
 
 .result-area {
