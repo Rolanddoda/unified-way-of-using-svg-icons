@@ -5,7 +5,7 @@ const globalStore = useGlobalStore()
 </script>
 
 <template>
-  <div class="area css-vars-area">
+  <div class="css-vars-area gradient-border relative-position q-pa-xl">
     <h4 class="h4 text-indigo-3 text-center q-mb-md">CSS Variables</h4>
 
     <q-input

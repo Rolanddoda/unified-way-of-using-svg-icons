@@ -5,7 +5,7 @@ const globalStore = useGlobalStore()
 </script>
 
 <template>
-  <div class="area controls-area">
+  <div class="controls gradient-border relative-position q-pa-xl">
     <h4 class="h4 text-indigo-3 text-center">Controls</h4>
 
     <section class="section">
@@ -32,7 +32,7 @@ const globalStore = useGlobalStore()
 </template>
 
 <style lang="scss" scoped>
-.controls-area {
+.controls {
   display: grid;
   align-items: start;
   gap: 16px;
