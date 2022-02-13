@@ -12,15 +12,12 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #202124;
+  color: white;
 }
 
 html, body, #app {
   height: 100%;
-}
-
-body {
-  background: #202124;
-  color: white;
 }
 
 #app {
