@@ -1,30 +1,6 @@
 <script>
 import { defineAsyncComponent } from 'vue'
-
-const sizes = {
-  sm: {
-    size: 16,
-    strokeWidth: 1
-  },
-  md: {
-    size: 24,
-    strokeWidth: 1
-  },
-  lg: {
-    size: 32,
-    strokeWidth: 2
-  },
-  xl: {
-    size: 48,
-    strokeWidth: 2.5
-  }
-}
-const defaults = {
-  color: 'var:primary',
-  varPrefix: 'q-',
-  hoverColor: 'white',
-  size: 'xl'
-}
+import { sizes, defaults } from './constants'
 
 export default {
   props: {
@@ -51,7 +27,7 @@ export default {
     dynamicComponent() {
       const name = this.name.charAt(0).toUpperCase() + this.name.slice(1) + 'Icon'
 
-      return defineAsyncComponent(() => import(`../icons/${name}.vue`))
+      return defineAsyncComponent(() => import(`/src/components/icons/${name}.vue`))
     },
 
     colorBind() {
@@ -93,7 +69,6 @@ export default {
     :stroke-width="strokeWidth"
     :class="{ 'add-hover': !!hoverColorBind }"
   />
-  <!--  <div></div>-->
 </template>
 
 <style lang="scss" scoped>

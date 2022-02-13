@@ -1,6 +1,6 @@
 import { app } from './main-app'
 
-const globalComponentsPaths = import.meta.globEager('/src/components/global/*.vue')
+const globalComponentsPaths = import.meta.globEager('/src/components/global/**/*.vue')
 
 Object.entries(globalComponentsPaths).forEach(([path, module]) => {
   // "./components/SvgIcon.vue" -> "SvgIcon"
@@ -9,6 +9,5 @@ Object.entries(globalComponentsPaths).forEach(([path, module]) => {
     .pop()
     .replace(/\.vue$/, '')
 
-  // Register component globally
   app.component(componentName, module.default)
 })
