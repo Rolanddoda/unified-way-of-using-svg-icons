@@ -20,7 +20,7 @@ const globalStore = useGlobalStore()
           <div v-for="i in 3" :key="i" class="circle"></div>
         </div>
 
-        <highlightjs language="html" :code="globalStore.generatedCode" />
+        <highlightjs language="html" :code="globalStore.generatedCode" class="overflow-auto hide-scrollbar" />
       </div>
     </div>
   </div>
