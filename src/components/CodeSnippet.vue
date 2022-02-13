@@ -41,7 +41,7 @@ const globalStore = useGlobalStore()
   border-radius: 12px;
   min-width: 250px;
   width: 100%;
-  font-size: 1.7rem;
+  font-size: clamp(1.1rem, 9vw - 2rem, 1.7rem);
 
   .shadow,
   .shadow-background {
