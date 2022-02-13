@@ -8,25 +8,18 @@ const globalStore = useGlobalStore()
   <div class="controls gradient-border relative-position q-pa-xl">
     <h4 class="h4 text-indigo-3 text-center">Controls</h4>
 
-    <section class="section">
-      Change Icon:
-      <AppSelect v-model="globalStore.selectedIcon" :options="globalStore.availableIcons" />
-    </section>
+    <AppSelect label="Icon" v-model="globalStore.selectedIcon" :options="globalStore.availableIcons" />
+    <AppSelect label="Size" v-model="globalStore.selectedSize" :options="globalStore.availableSizes" />
+    <AppInput label="Color:" v-model="globalStore.color" hint="default value: var:primary" />
 
     <section class="section">
-      Change size:
-      <AppSelect v-model="globalStore.selectedSize" :options="globalStore.availableSizes" />
-    </section>
-
-    <section class="section">
-      Color:
-      <AppInput v-model="globalStore.color" placeholder="var:primary by default" />
-    </section>
-
-    <section class="section">
-      Enable hover color:
-      <q-checkbox dark dense type="checkbox" v-model="globalStore.hasHoverColor" class="q-ma-sm" />
-      <AppInput v-model="globalStore.hoverColor" :disable="!globalStore.hasHoverColor" placeholder="white by default" />
+      <q-checkbox label="Enable hover color" dark dense v-model="globalStore.hasHoverColor" class="q-mb-sm" />
+      <AppInput
+        label="Hover color"
+        v-model="globalStore.hoverColor"
+        :disable="!globalStore.hasHoverColor"
+        hint="default value: white"
+      />
     </section>
   </div>
 </template>
