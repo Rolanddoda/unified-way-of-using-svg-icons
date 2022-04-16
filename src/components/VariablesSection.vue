@@ -24,7 +24,7 @@ const globalStore = useGlobalStore()
       <template #append>
         <q-icon name="colorize" class="cursor-pointer">
           <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-            <q-color v-model="globalStore.cssVarColors[colorKey]" />
+            <q-color dark v-model="globalStore.cssVarColors[colorKey]" />
           </q-popup-proxy>
         </q-icon>
       </template>

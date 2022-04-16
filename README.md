@@ -1,11 +1,6 @@
 ## What is it?
 
-It's an interactive demo made with Vue 3, Vite, Quasar for the article [Unified way of using SVG icons](https://github.com/Rolanddoda/articles/blob/main/unified-way-of-using-svg-icons.md).
-
-- [See it online](https://vbwippnrg--github--3000.local.webcontainer.io)
-- [See the source code](https://stackblitz.com/github/vbwippnrg?devtoolsheight=33&file=src/components/SvgIcon.vue)
-
-This template should help get you started developing with Vue 3 in Vite.
+It's an interactive playground simple app made with Vue 3, Vite, Quasar and Pinia for the article [Unified way of using SVG icons](https://github.com/Rolanddoda/articles/blob/main/unified-way-of-using-svg-icons.md).
 
 ## Customize configuration
 
